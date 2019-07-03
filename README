@@ -1,0 +1,70 @@
+This is the WICED demo application for the Laird EWB devkit. To build this
+demo, you will need version 6.2.1 of WICED Studio available from the following
+website:
+
+https://community.cypress.com/community/wiced-wifi/wiced-wifi-documentation
+
+Once downloaded and installed, copy the files from this repository on top of
+the WICED-Studio-6.2.1 folder that was created as part of the installation.
+Copying will overwrite several files that are part of WICED and will create
+two new folders:
+
+43xxx_Wi-Fi/platforms/LAIRD_EWB
+43xxx_Wi-Fi/apps/laird
+
+To builld the demo application, a new build string will be required. The build
+string for the demo application is:
+
+laird.demo-LAIRD_EWB-ThreadX-NetX-SDIO download download_apps run
+
+Running this build will compile the demo application, flash the radio firmware
+into external SPI flash, and the demo firmware into the internal flash memory
+of the EWB. The demo firmware should start executing.
+
+The demo firmware is intended to be used along with the EWB demo mobile
+application available from the typical app stores.
+
+NOTE:
+The firmware in this repository depends on licenced software from Bosch for the
+BME680 environmental sensor used on the devkit board. The Bosch Sensortec
+Environmental Cluster (BSEC) software can be integrated by following these
+steps:
+
+1. Go to this URL:
+
+https://www.bosch-sensortec.com/bst/products/all_products/bsec
+
+Scroll to the bottom to read and agree to the license agreement. Click the
+Download link that appears.
+
+2. Unzip the downloaded file.
+
+3. Copy the two .h files and one .a file from 
+
+    ...\algo\bin\Normal_version\gcc\Cortex_M4F
+
+in the BSEC release into
+
+    ...\43xxx_Wi-Fi\apps\laird\demo\sensor\
+    
+in the WICED installation.
+
+4. Copy the three bme680.* files from
+
+    ...\API\
+
+in the BSEC release into
+
+    ...\43xxx_Wi-Fi\apps\laird\demo\sensor\
+
+in the WICED installation.
+
+5. Copy the two bsec_integration.* files from
+
+...\examples\
+
+in the BSEC release into
+
+...\43xxx_Wi-Fi\apps\laird\demo\sensor\
+
+in the WICED installation.
