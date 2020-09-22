@@ -41,7 +41,7 @@ Download link that appears.
 
 3. Copy the two .h files and one .a file from 
 
-    ...\algo\bin\Normal_version\gcc\Cortex_M4F
+    ...\algo\normal_version\bin\gcc\Cortex_M4
 
 in the BSEC release into
 

@@ -35,6 +35,17 @@ THE SOFTWARE.
 
 #include "ble_connection.h"
 
+/* Bluetooth application tracing macro */
+#ifndef WPRINT_BT_APP_INFO
+extern wiced_mutex_t global_trace_mutex;
+#define WPRINT_BT_APP_INFO(info)    { \
+                                        wiced_rtos_lock_mutex(&global_trace_mutex);     \
+                                        WPRINT_APP_INFO(info);                          \
+                                        wiced_rtos_unlock_mutex(&global_trace_mutex);   \
+                                    }
+#endif
+
+
 wiced_bt_gatt_status_t wifi_config_write_request_handler( uint16_t conn_id, wiced_bt_gatt_write_t * p_data );
 void wifi_config_scan_mode_write_handler(void);
 wiced_bt_gatt_status_t wifi_config_confirmation_handler( ble_connection_flags_t *ble_connection_flags, uint16_t conn_id, uint16_t handle );
